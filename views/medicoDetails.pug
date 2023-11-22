@@ -1,0 +1,47 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title HealthSync - #{user.name}
+        link(rel="stylesheet", href="./../styles/style.css")
+        link(rel="shortcut icon", href="./../assets/favicon.ico", type="image/x-icon")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        script(src="https://kit.fontawesome.com/1d41b3ab2c.js", crossorigin="anonymous")
+        script(type="module", defer, src="./../js/medicoDetails.js") 
+    body.w-screen.bg-branco
+        header.header.flex.flex-row.justify-center.items-center.py-10.px-8
+            div.flex.flex-row.justify-center.items-center.gap-4.font-barlow.font-bold.tracking-wider.text-gray-700.drop-shadow-md(class="w-[80%]")
+                img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${user.photo}`, alt="", class="w-[30%]", data-id=user._id)
+                ul.flex.flex-col.justify-center.items-center
+                    li=user.name 
+                    li=user.speciality 
+                    li.user__location=`${user.city} - ${user.state}`     
+            div.flex.flex-col.justify-center.items-center(class="w-[20%]")
+                img(src="./../assets/logo.png", alt="", class="w-[85%]")
+        main.main.flex.flex-row.flex-wrap.justify-center.items-center.gap-6.w-full.pb-10
+            div.flex.flex-col.justify-center.items-center.gap-3(class="w-[90%]")                
+                img.rounded-lg.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${doctor.photo.split('.')[0]}-2.png`, alt="")
+                h2.font-barlow.font-bold.tracking-wider.text-azul.text-2xl=`${doctor.photo === 'paschoal.png' ? 'Dr.' : 'Dra.'} ${doctor.name}`
+                h3.font-barlow.font-bold.tracking-wider.text-azul.text-xl=doctor.speciality
+            div.flex.flex-col.justify-center.items-center.gap-4.font-poppins.text-gray-700.tracking-wider.w-full.text-center
+                div.flex.flex-row.justify-evenly.items-center(class="w-[90%]")
+                    p.font-bold(class="w-[35%]") CRM
+                    p(class="w-[75%]")=doctor.crm
+                div.flex.flex-row.justify-evenly.items-center(class="w-[90%]")
+                    p.font-bold(class="w-[35%]") TEL.
+                    p(class="w-[75%]")=doctor.phone
+                div.flex.flex-row.justify-evenly.items-center(class="w-[90%]")
+                    p.font-bold(class="w-[35%]") EMAIL
+                    p(class="w-[75%]")=doctor.email
+                div.flex.flex-row.justify-evenly.items-center(class="w-[90%]")
+                    p.font-bold(class="w-[35%]") CIDADE
+                    p(class="w-[75%]")=doctor.city
+                div.flex.flex-row.justify-evenly.items-center(class="w-[90%]")
+                    p.font-bold(class="w-[35%]") ESTADO
+                    p(class="w-[75%]")=doctor.state
+            div.flex.flex-row.justify-evenly.items-center.w-full.font-poppins.text-gray-50.tracking-wider.text-center.py-8
+                a.bg-azul.px-4.py-2.shadow-xl(href="", class="w-[35%]") AGENDAR
+                a.bg-azul.px-4.py-2.shadow-xl(href="", class="w-[35%]") CONVERSAR
+        footer.w-full.bg-azul.flex.flex-row.justify-center.py-3
+            img(src="./../assets/hapvida.png", alt="",class="w-[70%]") 

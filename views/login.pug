@@ -1,0 +1,23 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title HealthSync - Login
+        link(rel="stylesheet", href="./styles/style.css")
+        link(rel="shortcut icon", href="./assets/favicon.ico", type="image/x-icon")
+        script(src="https://kit.fontawesome.com/1d41b3ab2c.js" crossorigin="anonymous")
+    body.w-screen
+        header.bg-gradientBlue.w-full.py-8.flex.flex-col.justify-center.items-center.gap-10(class="min-h-[100dvh]")         
+            div.flex.flex-row.justify-center.items-center.gap-4
+                h1.font-bold.font-barlow.text-5xl.text-gray-50 HealthSync
+                img(src="./assets/logo.png", alt="", class="w-[20%]")
+            h3.font-barlow.font-black.text-gray-50.text-3xl Acessar como: 
+            div.flex.flex-col.justify-center.items-center.gap-10(class="w-[40%]")
+                a.flex.flex-col.justify-center.items-center.gap-4(href="/login/medico")
+                    img.rounded-full.shadow-xl.border-4.border-solid(src="./assets/doctor.jpg", alt="", class="border-[#EDBB1F]")
+                    h4.font-barlow.font-bold.text-3xl.text-gray-50.tracking-wider Médico
+                a.flex.flex-col.justify-center.items-center.gap-4(href="/login/paciente")
+                    img.rounded-full.shadow-xl.border-4.border-solid(src="./assets/user.png", alt="", class="border-[#EDBB1F]")
+                    h4.font-barlow.font-bold.text-3xl.text-gray-50.tracking-wider Paciente
+                    

@@ -1,0 +1,32 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Chat com #{chatsWith.name}
+        link(rel="stylesheet", href="./../styles/style.css")
+        link(rel="shortcut icon", href="./../assets/favicon.ico", type="image/x-icon")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        script(src="https://kit.fontawesome.com/1d41b3ab2c.js", crossorigin="anonymous")
+    body.w-screen.bg-branco
+        header.header.flex.flex-row.justify-center.items-center.py-10.px-8
+            div.flex.flex-col.justify-center.items-center.gap-4.font-barlow.font-bold.tracking-wider.text-gray-700.drop-shadow-md(class="w-[50%]")
+                img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${user.photo}`, alt="", class="w-[40%]", data-id=user._id)
+                ul.flex.flex-col.justify-center.items-center
+                    li.username=user.name 
+                    li=user.speciality 
+                    li=`${user.city} - ${user.state}`     
+            div.flex.flex-col.justify-center.items-center.gap-4.font-barlow.font-bold.tracking-wider.text-gray-700.drop-shadow-md(class="w-[50%]")
+                img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${chatsWith.photo}`, alt="", class="w-[40%]", data-id=chatsWith._id)
+                ul.flex.flex-col.justify-center.items-center
+                    li=chatsWith.name 
+                    li=chatsWith.speciality 
+                    li=`${chatsWith.city} - ${chatsWith.state}` 
+        main.main.flex.flex-row.flex-wrap.justify-center.items-center.gap-6.w-full
+            ul#messages.bg-white.rounded-lg.shadow-xl.overflow-y-scroll.p-3.gap-5.flex.flex-col.justify-start.items-center(class="w-[90%] h-[50vh]")
+                
+            form#form.w-full.flex.flex-col.justify-center.items-center.gap-3(action="#") 
+                input#input.border.border-solid.border-amarelo.font-poppins.text-sm.text-gray-700.p-2.text-left(type="text", class="w-[80%] ")
+                button.font-poppins.font-bold.bg-azul.text-gray-50.px-3.py-2 Enviar
+        script(src="/socket.io/socket.io.js") 
+        script(src="./../js/chatRoom.js") 

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.toChat__button {
+  @apply font-poppins bg-azul px-5 py-4 text-gray-50 flex flex-row justify-center items-center rounded-lg shadow-xl w-[40%];
+}
+
+.startChat__button {
+  @apply flex flex-row justify-center items-center bg-azul text-gray-50 p-3 shadow-xl w-[80%];
+}
+
+.startChat__text {
+  @apply font-poppins flex flex-col text-sm justify-center items-center w-[70%];
+}
+
+.startChat__img-container {
+  @apply flex flex-col justify-center items-center w-[30%];
+}
+
+.startChat__img {
+  @apply rounded-full border-2 border-solid border-amarelo w-[70%];
+}
+
+.text-message {
+  @apply text-gray-700 font-poppins tracking-wider flex flex-row justify-start items-center w-full gap-4;
+}
+
+.text-img {
+  @apply rounded-full border-2 border-solid border-amarelo shadow-xl w-[15%];
+}
+
+.text-p {
+  @apply w-[70%];
+}
+
+.text-p-server {
+  @apply w-full text-center;
+}
+
+.text-time {
+  @apply self-end text-sm w-[15%];
+}
+
+.reverse {
+  @apply flex-row-reverse;
+}
+
+.text-righttt {
+  @apply text-right;
+}
+
+.otherStates__button {
+  @apply bg-amarelo px-4 py-2 shadow-lg font-poppins text-gray-700 tracking-wider w-[60%] text-sm;
+}

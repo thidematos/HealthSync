@@ -1,0 +1,28 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title HealthSync - Médico
+        link(rel="stylesheet", href="./../styles/style.css")
+        link(rel="shortcut icon", href="./../assets/favicon.ico", type="image/x-icon")
+        script(type="module", defer, src="./../js/login-doctor.js") 
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+    body.w-screen
+        header.bg-gradientBlue.w-full.py-8.flex.flex-col.justify-center.items-center.gap-10(class="min-h-[100dvh]")         
+            div.flex.flex-row.justify-center.items-center.gap-4
+                h1.font-bold.font-barlow.text-5xl.text-gray-50 HealthSync
+                img(src="./../assets/logo.png", alt="", class="w-[20%]")          
+            section.flex.flex-col.justify-center.items-center.gap-4(class="w-[80%]") 
+                form.form.font-inter.bg-gray-50.p-6.gap-6.flex.flex-col.justify-center.items-center.text-gray-800.rounded-2xl.shadow-xl(action="#")
+                    div.flex.flex-col.justify-center.items-center.gap-4(class="w-[40%]")              
+                        img.rounded-full.shadow-xl.border-4.border-solid(src="./../assets/doctor.jpg", alt="", class="border-[#EDBB1F]")
+                        h4.font-barlow.font-bold.text-3xl.tracking-wider Médico
+                    div.flex.flex-col.justify-center.items-start.gap-2
+                        label.font-black.tracking-wider(for="form__crm") CRM 
+                        input#form__crm.border-2.border-solid.p-2(class="border-gray-700/75", type="text", name="", placeholder="CRM/*********", required)
+                    div.flex.flex-col.justify-center.items-start.gap-2
+                        label.font-black.tracking-wider(for="form__password") Senha 
+                        input#form__password.border-2.border-solid.p-2(class="border-gray-700/75", type="password", name="", required)
+                    input.bg-azul.text-gray-50.px-3.py-2.font-bold.tracking-wider.text-xl.shadow-lg(type="submit", value="Entrar")
+            div.popup.opacity-0.absolute.px-6.py-4.text-center.text-gray-50.font-poppins.duration-700(class="bg-orange-400 w-[75vw] bottom-[3%]") CRM ou senha incorretos!
