@@ -96,10 +96,41 @@ exports.historico = (req, res, next) => {
   res.status(200).render('historical');
 };
 
+exports.historicoPaciente = (req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.paciente = req.paciente;
+
+  res.status(200).render('historical-paciente');
+};
+
 exports.novoProntuario = (req, res, next) => {
   res.locals.user = req.user;
   res.locals.paciente = req.paciente;
   res.locals.consulta = req.consulta;
 
   res.status(200).render('novo-prontuario');
+};
+
+exports.prontuario = (req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.paciente = req.paciente;
+  res.locals.prontuario = req.paciente.prontuarios.find(
+    (prontuario) => `${prontuario._id}` === `${req.query.cod}`
+  );
+
+  console.log(res.locals.prontuario);
+
+  res.status(200).render('prontuario');
+};
+
+exports.prontuarioPaciente = (req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.paciente = req.paciente;
+  res.locals.prontuario = req.paciente.prontuarios.find(
+    (prontuario) => `${prontuario._id}` === `${req.query.cod}`
+  );
+
+  console.log(res.locals.prontuario);
+
+  res.status(200).render('prontuario-paciente');
 };

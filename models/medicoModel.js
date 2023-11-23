@@ -68,6 +68,10 @@ const medicoSchema = new mongoose.Schema({
       day: String,
       hour: String,
       reason: String,
+      hasProntuario: {
+        type: Boolean,
+        default: false,
+      },
     },
   ],
 });

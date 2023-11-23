@@ -511,6 +511,10 @@ video {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
+.my-8{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .mb-2{
   margin-bottom: 0.5rem;
 }
@@ -782,6 +786,10 @@ video {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.py-5{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
 .py-6{
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -792,6 +800,9 @@ video {
 }
 .pb-10{
   padding-bottom: 2.5rem;
+}
+.pb-16{
+  padding-bottom: 4rem;
 }
 .pb-4{
   padding-bottom: 1rem;
@@ -808,8 +819,14 @@ video {
 .pt-16{
   padding-top: 4rem;
 }
+.pt-3{
+  padding-top: 0.75rem;
+}
 .pt-4{
   padding-top: 1rem;
+}
+.pt-5{
+  padding-top: 1.25rem;
 }
 .text-left{
   text-align: left;
@@ -841,6 +858,10 @@ video {
 .text-5xl{
   font-size: 3rem;
   line-height: 1;
+}
+.text-base{
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 .text-lg{
   font-size: 1.125rem;
@@ -1059,6 +1080,14 @@ video {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.label__bold{
+  font-weight: 700;
+}
+
+.input__padding{
+  padding: 0.5rem;
 }
 
 .loader {

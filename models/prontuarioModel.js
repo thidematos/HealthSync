@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
+const { prontuario } = require('../controllers/viewController');
 
 const prontuarioSchema = new mongoose.Schema({
   paciente: {
     type: mongoose.Schema.ObjectId,
     ref: 'Paciente',
     required: [true, 'Um prontuário deve ter um paciente'],
+  },
+  cod: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Medico',
   },
   healthPlan: String,
   medico: {
@@ -39,35 +44,43 @@ const prontuarioSchema = new mongoose.Schema({
       },
     },
   ],
-  treatment: [
-    {
-      recomendation: {
-        type: String,
-        required: [true, 'Uma recomendação é necessária'],
-      },
-      prescriptions: [
-        {
-          medicamento: String,
-          dosagem: String,
-          período: String,
-        },
-      ],
-      followUp: {
-        type: String,
-        default: 'Retorno não é necessário',
-      },
+  treatment: {
+    recomendation: {
+      type: String,
+      required: [true, 'Uma recomendação é necessária'],
     },
-  ],
+    prescriptions: [
+      {
+        medicamento: String,
+        dosagem: String,
+        periodo: String,
+      },
+    ],
+  },
   exams: [
     {
-      name: String,
-      results: String,
+      name: {
+        type: String,
+        default: 'Não se aplica',
+      },
+      results: {
+        type: String,
+        default: 'Não se aplica',
+      },
     },
   ],
   observations: {
     type: String,
     default: 'Nenhuma consideração adicional.',
   },
+});
+
+prontuarioSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'medico',
+    select: '-role -__v -disponibilidade -pacientes',
+  });
+  next();
 });
 
 const Prontuario = mongoose.model('Prontuario', prontuarioSchema);

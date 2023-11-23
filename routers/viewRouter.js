@@ -131,13 +131,36 @@ router.get(
 );
 
 router.get(
+  '/historico-paciente/:id',
+  authController.protectPaciente,
+  authController.restrictTo('paciente'),
+  pacienteController.getHistorical,
+  viewController.historicoPaciente
+);
+
+router.get(
   '/novo-prontuario/:id',
   authController.protect,
   authController.restrictTo('medico'),
   medicoController.getConsulta,
   pacienteController.getHistorical,
-  prontuarioController.createProntuario,
   viewController.novoProntuario
+);
+
+router.get(
+  '/prontuario/:id',
+  authController.protect,
+  authController.restrictTo('medico'),
+  pacienteController.getHistorical,
+  viewController.prontuario
+);
+
+router.get(
+  '/prontuario-paciente/:id',
+  authController.protectPaciente,
+  authController.restrictTo('paciente'),
+  pacienteController.getHistorical,
+  viewController.prontuarioPaciente
 );
 
 module.exports = router;

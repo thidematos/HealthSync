@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', viewRouter);
 app.use('/api/medicos', medicoRouter);
 app.use('/api/pacientes', pacienteRouter);
+app.use('/api/prontuario', prontuarioRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError('URL não encontrada!', 400));

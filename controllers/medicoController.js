@@ -105,3 +105,17 @@ exports.getConsulta = catchAsync(async (req, res, next) => {
 
   next();
 });
+
+exports.postProntuario = catchAsync(async (req, res, next) => {
+  const medicoId = req.body.medico;
+
+  const medico = await Medico.findById(medicoId);
+
+  medico.pacientes.find(
+    (consulta) => `${consulta._id}` === `${req.body.cod}`
+  ).hasProntuario = true;
+
+  medico.save({ validateModifiedOnly: true });
+
+  next();
+});

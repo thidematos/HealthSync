@@ -1,0 +1,90 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title HealthSync - #{user.name}
+        link(rel="stylesheet", href="./../styles/style.css")
+        link(rel="shortcut icon", href="./../assets/favicon.ico", type="image/x-icon")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        script(src="https://kit.fontawesome.com/1d41b3ab2c.js", crossorigin="anonymous")
+    body.w-screen.bg-branco
+        header.header.flex.flex-row.justify-center.items-center.py-10.px-8
+            div.flex.flex-row.justify-center.items-center.gap-4.font-barlow.font-bold.tracking-wider.text-gray-700.drop-shadow-md(class="w-[80%]")
+                img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${user.photo}`, alt="", class="w-[30%]", data-id=user._id)
+                ul.flex.flex-col.justify-center.items-center
+                    li=user.name 
+                    li=user.speciality 
+                    li=`${user.city} - ${user.state}`     
+            div.flex.flex-col.justify-center.items-center(class="w-[20%]")
+                img(src="./../assets/logo.png", alt="", class="w-[85%]")
+        main.main.flex.flex-col.justify-center.items-center.pb-10.w-full.px-6.gap-8
+            div.flex.flex-col.justify-center.items-center.gap-3.border-b.border-solid.border-gray-700.pb-6(class="w-[80%]")
+                h2.font-barlow.font-bold.text-2xl.text-azul.tracking-wider.drop-shadow-lg Prontuário
+                p.cod.font-bold.font-poppins.text-gray-700.tracking-wider.text-sm(data-cod=prontuario._id) COD. #{prontuario._id} 
+            div.firstDiv.flex.flex-col.justify-center.items-start.gap-2.text-gray-700.font-poppins.text-sm(class="w-[80%]")
+                div.flex.flex-row.justify-between.items-center.w-full
+                    p.font-bold NOME
+                    p=paciente.name
+                div.flex.flex-row.justify-between.items-center.w-full
+                    p.font-bold IDADE
+                    p=paciente.age + ' anos'
+                div.flex.flex-row.justify-between.items-center.w-full
+                    p.font-bold NASCIMENTO
+                    p=paciente.birth
+                div.flex.flex-row.justify-center.items-center.w-full.py-5
+                    p.font-bold ANAMNESE
+                each anamnese in prontuario.anamnese                 
+                    div.flex.flex-row.justify-between.items-center.w-full.pt-3
+                        p.font-bold SINTOMA
+                        p=anamnese.reports 
+                    div.flex.flex-row.justify-between.items-center.w-full.pb-4.border-b.border-solid.border-gray-700
+                        p.font-bold TEMPO
+                        p=anamnese.timeSinceStarted
+                div.flex.flex-row.justify-center.items-center.w-full.py-5
+                        p.font-bold DIAGNÓSTICO
+                each diagnostico in prontuario.diagnosis 
+                    div.flex.flex-row.justify-start.items-center.w-full
+                        p.font-bold=`- ${diagnostico.main.toUpperCase()}`
+                div.flex.flex-row.justify-center.items-center.w-full.py-5
+                    p.font-bold TRATAMENTO
+                div.flex.flex-col.justify-between.items-start.w-full
+                    p.font-bold RECOMENDAÇÃO
+                    p=prontuario.treatment.recomendation
+                div.flex.flex-row.justify-center.items-center.w-full
+                    p.font-bold.py-2 PRESCRIÇÕES
+                each prescription in prontuario.treatment.prescriptions
+                    div.flex.flex-row.justify-between.items-center.w-full
+                        p.font-bold MEDICAMENTO
+                        p=prescription.medicamento 
+                    div.flex.flex-row.justify-between.items-center.w-full
+                        p.font-bold DOSAGEM
+                        p=prescription.dosagem 
+                    div.flex.flex-row.justify-between.items-center.w-full.pb-4.border-b.border-solid.border-gray-700
+                        p.font-bold PERÍODO
+                        p=prescription.periodo
+                div.flex.flex-row.justify-center.items-center.w-full.py-5
+                        p.font-bold EXAMES
+                each exam in prontuario.exams
+                    div.flex.flex-row.justify-between.items-center.w-full
+                        p.font-bold CATEGORIA
+                        p=exam.name 
+                    div.flex.flex-row.justify-between.items-center.w-full
+                        p.font-bold RESULTADOS
+                        p=exam.results
+                div.flex.flex-row.justify-center.items-center.w-full.py-5
+                        p.font-bold OBSERVAÇÕES
+                div.flex.flex-row.justify-between.items-center.w-full
+                    p=prontuario.observations
+                div.flex.flex-row.justify-center.items-center.w-full.pt-5
+                        p.font-bold MÉDICO RESPONSÁVEL
+                div.flex.flex-col.justify-center.items-center.w-full
+                        p.font-bold=prontuario.medico.name
+                        p=prontuario.medico.crm
+        div.flex.flex-row.justify-evenly.items-center.w-full.pb-16
+            a.font-bold.font-poppins.tracking-wider.text-gray-50.px-4.py-2.bg-azul.shadow-xl.text-lg(href="/paciente-overview") RETORNAR
+        footer.w-full.bg-azul.flex.flex-row.justify-center.py-3
+            img(src="./../assets/hapvida.png", alt="",class="w-[70%]")
+ 
+
+            

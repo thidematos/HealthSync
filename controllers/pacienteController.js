@@ -79,6 +79,20 @@ exports.getHistorical = catchAsync(async (req, res, next) => {
 
   req.paciente = paciente;
 
-  console.log(paciente);
   next();
+});
+
+exports.postProntuario = catchAsync(async (req, res, next) => {
+  const paciente = await Paciente.findById(req.body.paciente);
+
+  paciente.prontuarios.push(req.prontuario);
+
+  paciente.save({ validateModifiedOnly: true });
+
+  res.status(201).json({
+    status: 'sucess',
+    data: {
+      prontuario: req.prontuario,
+    },
+  });
 });

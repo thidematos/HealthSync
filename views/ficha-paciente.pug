@@ -45,6 +45,8 @@ html(lang="pt-br")
                 div.flex.flex-col.justify-center.items-start.gap-2(class="w-[85%]")
                     p.font-bold SINTOMAS
                     p=paciente.reason
-            a.mt-8.text-gray-50.px-4.py-2.bg-azul.shadow-xl.text-lg.font-bold.flex.flex-row.justify-center.items-center.gap-3.rounded-lg(href=`/novo-prontuario/${paciente.pacienteId._id}?consulta=${paciente._id}`)
-                p PRONTUÁRIO
-                i(class="fa-solid fa-notes-medical")
+            a.mt-8.text-gray-50.px-4.py-2.bg-azul.shadow-xl.text-lg.font-bold.flex.flex-row.justify-center.items-center.gap-3.rounded-lg(href=`/novo-prontuario/${paciente.pacienteId._id}?consulta=${paciente._id}`, class=`${paciente.hasProntuario ? 'hidden' : ''}`)
+                p.tracking-wider PRONTUÁRIO
+                i(class=`fa-solid fa-notes-medical`)
+            p.my-8.font-poppins.font-bold.tracking-wider.text-gray-700.text-xl.text-center(class=`${paciente.hasProntuario ? '' : 'hidden'}`) Essa consulta já gerou um prontuário.
+                
