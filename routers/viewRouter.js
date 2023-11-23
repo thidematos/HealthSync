@@ -50,12 +50,29 @@ router.get(
 );
 
 router.get(
+  '/chat-room-paciente/:id',
+  authController.protectPaciente,
+  authController.restrictTo('paciente'),
+  chatController.chatWith,
+  viewController.chatRoom
+);
+
+router.get(
   '/conversas',
   authController.protect,
   authController.restrictTo('medico'),
   roomController.getUserRooms,
   medicoController.getMedicosHasChat,
   viewController.conversas
+);
+
+router.get(
+  '/conversas-paciente',
+  authController.protectPaciente,
+  authController.restrictTo('paciente'),
+  roomController.getUserRooms,
+  medicoController.getMedicosHasChat,
+  viewController.conversasPaciente
 );
 
 router.get(
@@ -71,6 +88,28 @@ router.get(
   authController.restrictTo('paciente'),
   medicoController.getMedico,
   viewController.medicoDetails
+);
+
+router.get(
+  '/agendamento/:id',
+  authController.protectPaciente,
+  authController.restrictTo('paciente'),
+  medicoController.getMedico,
+  viewController.agendamento
+);
+
+router.get(
+  '/consultas',
+  authController.protectPaciente,
+  authController.restrictTo('paciente'),
+  viewController.consultas
+);
+
+router.get(
+  '/pacientes',
+  authController.protect,
+  authController.restrictTo('medico'),
+  viewController.pacientes
 );
 
 module.exports = router;

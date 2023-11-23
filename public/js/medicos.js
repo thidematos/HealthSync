@@ -45,7 +45,6 @@ class App {
     this.otherStatesContainer.innerHTML = '';
 
     const states = this.doctors.map((doctor) => doctor.state);
-    console.log(states);
     const statesSet = [...new Set(states)];
     const statesSetFiltered = statesSet.filter((state) => {
       return state.trim() !== currentState.trim();

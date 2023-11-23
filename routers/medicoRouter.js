@@ -7,7 +7,8 @@ const router = express.Router();
 router
   .route('/')
   .post(medicoController.createMedico)
-  .get(medicoController.getAllMedicos);
+  .get(medicoController.getAllMedicos)
+  .delete(medicoController.deleteAll);
 
 router.post('/login', authController.login);
 

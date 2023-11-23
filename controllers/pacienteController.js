@@ -39,3 +39,37 @@ exports.createPaciente = catchAsync(async (req, res, next) => {
     },
   });
 });
+
+exports.schedule = catchAsync(async (req, res, next) => {
+  const { pacienteId, day, hour, reason } = req.body;
+
+  const paciente = await Paciente.findById(pacienteId);
+  console.log(paciente);
+
+  paciente.schedule.push({
+    medicoId: req.params.id,
+    day: day,
+    hour: hour,
+    reason: reason,
+  });
+
+  const updatedPaciente = await paciente.save({ validateModifiedOnly: true });
+
+  res.status(200).json({
+    status: 'sucess',
+    data: {
+      paciente: updatedPaciente,
+    },
+  });
+});
+
+exports.getAllPacientes = async (req, res, next) => {
+  const pacientes = await Paciente.find({});
+
+  res.status(200).json({
+    status: 'sucess',
+    data: {
+      pacientes,
+    },
+  });
+};

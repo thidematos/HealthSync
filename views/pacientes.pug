@@ -1,0 +1,36 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title HealthSync - #{user.name}
+        link(rel="stylesheet", href="./styles/style.css")
+        link(rel="shortcut icon", href="./assets/favicon.ico", type="image/x-icon")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        script(src="https://kit.fontawesome.com/1d41b3ab2c.js", crossorigin="anonymous")
+    body.w-screen.bg-branco
+        header.header.flex.flex-row.justify-center.items-center.py-10.px-8
+            div.flex.flex-row.justify-center.items-center.gap-4.font-barlow.font-bold.tracking-wider.text-gray-700.drop-shadow-md(class="w-[80%]")
+                img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./assets/${user.photo}`, alt="", class="w-[30%]", data-id=user._id)
+                ul.flex.flex-col.justify-center.items-center
+                    li=user.name 
+                    li=user.speciality 
+                    li=`${user.city} - ${user.state}`     
+            div.flex.flex-col.justify-center.items-center(class="w-[20%]")
+                img(src="./assets/logo.png", alt="", class="w-[85%]")
+        main.main.flex.flex-col.justify-center.items-center.gap-6.pb-10.w-full
+            h3.font-barlow.font-bold.text-3xl.text-azul.drop-shadow-lg Pacientes
+            each paciente in user.pacientes 
+                div.paciente__card.flex.flex-col.justify-center.items-center.gap-3.bg-azul.font-poppins.text-gray-50.text-center.shadow-xl.p-3(class="w-[80%]", data-id=`${paciente._id}`)
+                    div.flex.flex-row.justify-evenly.items-center.w-full
+                        p.font-bold.drop-shadow-lg=paciente.day 
+                        p.font-bold.drop-shadow-lg=paciente.hour + ' hr.'
+                    div.flex.flex-row.justify-evenly.items-center.w-full
+                        div.flex.flex-col.justify-center.items-center.gap-1.text-sm
+                            p=paciente.pacienteId.name 
+                            p=paciente.pacienteId.age + ' anos'
+                        div.flex.flex-col.justify-center.items-center(class="w-[30%]")
+                            img.border.border-solid.border-amarelo.rounded-full(src=`./assets/${paciente.pacienteId.photo}`, alt="", class="w-[65%]")
+
+        footer.w-full.bg-azul.flex.flex-row.justify-center.py-3(class=`${user.pacientes.length > 1 ? '' : 'absolute bottom-0'}`)
+            img(src="./assets/hapvida.png", alt="",class="w-[70%]") 

@@ -53,6 +53,23 @@ const medicoSchema = new mongoose.Schema({
     type: String,
     default: 'medico',
   },
+  disponibilidade: [
+    {
+      day: String,
+      hour: [String],
+    },
+  ],
+  pacientes: [
+    {
+      pacienteId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Paciente',
+      },
+      day: String,
+      hour: String,
+      reason: String,
+    },
+  ],
 });
 
 medicoSchema.pre('save', async function (next) {
@@ -74,6 +91,17 @@ medicoSchema.methods.correctPassword = async function (
 ) {
   return await bcrypt.compare(reqPassword, userPassword);
 };
+
+medicoSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'pacientes',
+    populate: {
+      path: 'pacienteId',
+      select: '-role -__v -schedule',
+    },
+  });
+  next();
+});
 
 const Medico = mongoose.model('Medico', medicoSchema);
 

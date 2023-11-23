@@ -4,6 +4,7 @@ const Medico = require('./models/medicoModel');
 const Room = require('./models/roomsModel');
 const app = require('./app');
 const { Server } = require('socket.io');
+const Paciente = require('./models/pacienteModel');
 
 dotenv.config({ path: './config.env' });
 
@@ -100,7 +101,8 @@ const createRoom = async (data) => {
 };
 
 const generatePhotoNameTime = async (id, msg) => {
-  const currentUser = await Medico.findById(id);
+  const currentUser =
+    (await Medico.findById(id)) || (await Paciente.findById(id));
   const now = new Date();
 
   return {

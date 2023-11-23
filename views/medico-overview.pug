@@ -34,12 +34,9 @@ html(lang="pt-br")
                     img.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./assets/${user.photo}`, alt="")
                     h2.font-barlow.font-bold.text-2xl.tracking-wider.text-azul.drop-shadow-md=user.name.split(' ')[0]
         main.flex.flex-col.justify-center.items-center.gap-6.w-full.text-center 
-            a.font-poppins.bg-azul.px-5.py-4.text-gray-50.flex.flex-row.justify-center.items-center.rounded-lg.shadow-xl.text-xl(href="",class="w-[60%]")
+            a.font-poppins.bg-azul.px-5.py-4.text-gray-50.flex.flex-row.justify-center.items-center.rounded-lg.shadow-xl.text-xl(href="/pacientes",class="w-[60%]")
                 p(class="w-[70%]") Pacientes 
                 i(class="fa-solid fa-id-card-clip text-2xl w-[30%]")
-            a.font-poppins.bg-azul.px-5.py-4.text-gray-50.flex.flex-row.justify-center.items-center.rounded-lg.shadow-xl.text-xl(href="",class="w-[60%]")
-                p(class="w-[70%]") Métricas
-                i(class="fa-solid fa-file-waveform text-2xl w-[30%]")
             a.font-poppins.bg-azul.px-5.py-4.text-gray-50.flex.flex-row.justify-center.items-center.rounded-lg.shadow-xl.text-xl(href="/chat",class="w-[60%]")
                 p(class="w-[70%]") Novo Chat
                 i(class="fa-solid fa-notes-medical text-2xl w-[30%]")

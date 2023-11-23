@@ -1,0 +1,60 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title HealthSync - #{user.name}
+        link(rel="stylesheet", href="./../styles/style.css")
+        link(rel="shortcut icon", href="./../assets/favicon.ico", type="image/x-icon")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        script(src="https://kit.fontawesome.com/1d41b3ab2c.js", crossorigin="anonymous")
+        script(type="module", defer, src="./../js/agendamento.js") 
+    body.w-screen.bg-branco
+        header.header.flex.flex-row.justify-center.items-center.py-10.px-8
+            div.flex.flex-row.justify-center.items-center.gap-4.font-barlow.font-bold.tracking-wider.text-gray-700.drop-shadow-md(class="w-[80%]")
+                img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${user.photo}`, alt="", class="w-[30%]", data-id=user._id)
+                ul.flex.flex-col.justify-center.items-center
+                    li=user.name 
+                    li=user.speciality 
+                    li.user__location=`${user.city} - ${user.state}`     
+            div.flex.flex-col.justify-center.items-center(class="w-[20%]")
+                img(src="./../assets/logo.png", alt="", class="w-[85%]")
+        main.main.flex.flex-row.flex-wrap.justify-center.items-center.gap-6.w-full.pb-10
+            div.flex.flex-col.justify-center.items-center.gap-3(class="w-[90%]")                
+                h2.doctorId.font-barlow.font-bold.tracking-wider.text-azul.text-2xl(data-id=doctor._id)=`${doctor.photo === 'paschoal.png' ? 'Dr.' : 'Dra.'} ${doctor.name}`
+                h3.font-barlow.font-bold.tracking-wider.text-azul.text-xl=doctor.speciality
+            div.hideOnHttp.flex.flex-col.justify-center.items-center.gap-5.w-full
+                h1.font-poppins.text-gray-700 Disponibilidades 
+                div.dispo__container.flex.flex-row.justify-start.items-center.w-full.gap-6.overflow-x-scroll.p-6
+                    each dispo in doctor.disponibilidade
+                        div.date__container.bg-white.font-poppins.text-gray-700.flex.flex-col.justify-center.p-4.shadow-lg(class="w-[40%]")
+                            div.flex.flex-row.justify-center.items-center.gap-4
+                                i(class="fa-regular fa-calendar")
+                                h4.day=`${dispo.day.split('-')[2]}/${dispo.day.split('-')[1]}/${dispo.day.split('-')[0]}` 
+                            div.flex.flex-row.justify-center.items-center.gap-4.flex-wrap
+                            each hour in dispo.hour 
+                                div.flex.flex-row.justify-center.items-center.gap-4
+                                    i(class="fa-regular fa-clock")
+                                    h5.hour=hour
+            div.hideOnHttp.confirm__container.flex.flex-col.justify-center.items-center.p-6.w-full.font-poppins.text-gray-700.gap-4.hidden
+                h4.font-bold.text-lg Confirmar agendamento
+                div.flex.flex-row.justify-center.items-center.gap-6(class="w-[60%]")
+                    p.confirmDay.font-bold 11/12/2023
+                div.confirmHour__container.flex.flex-row.justify-center.items-center.gap-4.flex-wrap.py-4
+                textarea.input__reason.p-2.text-sm.hidden(name="", cols="30", rows="3", placeholder="O que está sentindo?")
+                button.schedule__button.bg-azul.px-4.py-2.shadow-lg.text-gray-50.font-bold.tracking-wider.hidden AGENDAR
+            h5.help__text.bg-white.p-4.shadow-lg.font-poppins.text-azul.font-bold.text-lg.text-center.my-12(class="w-[70%]") Selecione um dia de sua preferência!
+            div.loader.hidden
+            div.sucess__schedule.flex.flex-col.justify-center.items-center.gap-4.font-poppins.text-gray-700.w-full.hidden
+                h5.font-bold.text-lg.text-azul Consulta agendada!
+                div.flex.flex-row.justify-center.items-center.text-center(class="w-[60%]")
+                    p.font-bold(class="w-[50%]") DIA:
+                    p.schedule__day(class="w-[50%]") 01/01/2001
+                div.flex.flex-row.justify-center.items-center.text-center(class="w-[60%]")
+                    p.font-bold(class="w-[50%]") HORA:
+                    p.schedule__hour(class="w-[50%]") 15:30
+                a.bg-azul.px-4.py-2.text-gray-50.shadow-lg.text-lg(href="/paciente-overview") RETORNAR
+        footer.w-full.bg-azul.flex.flex-row.justify-center.py-3
+            img(src="./../assets/hapvida.png", alt="",class="w-[70%]") 
+                    
+

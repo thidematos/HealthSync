@@ -56,7 +56,17 @@ const pacienteSchema = new mongoose.Schema({
   healthPlan: String,
   historical: String,
   prescriptions: String,
-  schedule: String,
+  schedule: [
+    {
+      medicoId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Medico',
+      },
+      day: String,
+      hour: String,
+      reason: String,
+    },
+  ],
   password: {
     type: String,
     required: [true, 'Um paciente deve ter uma senha'],
@@ -76,6 +86,7 @@ const pacienteSchema = new mongoose.Schema({
     default: 'paciente',
   },
   photo: String,
+  age: Number,
 });
 
 pacienteSchema.pre('save', async function (next) {
@@ -97,6 +108,17 @@ pacienteSchema.methods.correctPassword = async function (
 ) {
   return await bcrypt.compare(reqPassword, userPassword);
 };
+
+pacienteSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'schedule',
+    populate: {
+      path: 'medicoId',
+      select: '-role -__v -disponibilidade -pacientes',
+    },
+  });
+  next();
+});
 
 const Paciente = mongoose.model('Paciente', pacienteSchema);
 

@@ -45,6 +45,12 @@ exports.conversas = (req, res, next) => {
   res.status(200).render('conversas');
 };
 
+exports.conversasPaciente = (req, res, next) => {
+  res.locals.user = req.user;
+
+  res.status(200).render('conversas-paciente');
+};
+
 exports.medicos = (req, res, next) => {
   res.locals.user = req.user;
 
@@ -55,4 +61,24 @@ exports.medicoDetails = (req, res, next) => {
   res.locals.user = req.user;
   res.locals.doctor = req.currentMedico;
   res.status(200).render('medicoDetails');
+};
+
+exports.agendamento = (req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.doctor = req.currentMedico;
+
+  res.status(200).render('agendamento');
+};
+
+exports.consultas = (req, res, next) => {
+  res.locals.user = req.user;
+
+  res.status(200).render('consultas');
+};
+
+exports.pacientes = (req, res, next) => {
+  res.locals.user = req.user;
+  console.log(req.user.pacientes);
+
+  res.status(200).render('pacientes');
 };

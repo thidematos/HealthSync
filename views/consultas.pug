@@ -1,0 +1,42 @@
+doctype html
+html(lang="pt-br")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title HealthSync - #{user.name}
+        link(rel="stylesheet", href="./../styles/style.css")
+        link(rel="shortcut icon", href="./../assets/favicon.ico", type="image/x-icon")
+        script(src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js")
+        script(src="https://kit.fontawesome.com/1d41b3ab2c.js", crossorigin="anonymous")
+    body.w-screen.bg-branco
+        header.header.flex.flex-row.justify-center.items-center.py-10.px-8
+            div.flex.flex-row.justify-center.items-center.gap-4.font-barlow.font-bold.tracking-wider.text-gray-700.drop-shadow-md(class="w-[80%]")
+                img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${user.photo}`, alt="", class="w-[30%]", data-id=user._id)
+                ul.flex.flex-col.justify-center.items-center
+                    li=user.name 
+                    li=user.speciality 
+                    li.user__location=`${user.city} - ${user.state}`     
+            div.flex.flex-col.justify-center.items-center(class="w-[20%]")
+                img(src="./../assets/logo.png", alt="", class="w-[85%]")
+        main.main.flex.flex-col.justify-center.items-center.gap-6.w-full 
+            h2.font-barlow.font-bold.tracking-wider.text-2xl.text-azul.drop-shadow-lg Consultas agendadas
+            div.flex.flex-col.justify-center.items-center.gap-6.px-8.w-full
+                each consulta in user.schedule 
+                    div.flex.flex-col.justify-center.items-center.bg-white.border-2.border-solid.border-amarelo.p-4.font-poppins.text-gray-700.shadow-lg.w-full.gap-4
+                        div.flex.flex-col.items-center.justify-center.w-full.gap-1.drop-shadow-lg
+                            h3.font-bold=consulta.medicoId.name
+                            p=consulta.medicoId.speciality
+                        div.w-full.flex.flex-row.justify-evenly.items-center.font-bold.text-lg                   
+                            p=consulta.day 
+                            p=consulta.hour + ' hr.'
+                        div.flex.flex-row.justify-evenly.items-center.w-full.gap-4
+                            div.flex.flex-col.justify-center.items-center.gap-4.text-center.text-sm.drop-shadow-md(class="w-[50%]")
+                                p=consulta.medicoId.crm
+                                p=consulta.medicoId.phone                                  
+                                p=consulta.medicoId.email 
+                                p=consulta.medicoId.city 
+                                p=consulta.medicoId.state
+                            div.flex.flex-col.justify-center.items-center(class="w-[50%]")
+                                img.rounded-lg(src=`./../assets/${consulta.medicoId.photo.split('.')[0]}-3.png`, alt="", class="w-[85%]")
+        footer.w-full.bg-azul.flex.flex-row.justify-center.py-3.mt-8(class=`${user.schedule.length > 1 ? '' : 'absolute bottom-0'}`)
+            img(src="./assets/hapvida.png", alt="",class="w-[70%]")

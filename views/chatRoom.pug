@@ -14,7 +14,7 @@ html(lang="pt-br")
                 img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${user.photo}`, alt="", class="w-[40%]", data-id=user._id)
                 ul.flex.flex-col.justify-center.items-center
                     li.username=user.name 
-                    li=user.speciality 
+                    li=user.speciality || user.healthPlan
                     li=`${user.city} - ${user.state}`     
             div.flex.flex-col.justify-center.items-center.gap-4.font-barlow.font-bold.tracking-wider.text-gray-700.drop-shadow-md(class="w-[50%]")
                 img.imgId.rounded-full.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${chatsWith.photo}`, alt="", class="w-[40%]", data-id=chatsWith._id)

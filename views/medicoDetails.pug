@@ -21,7 +21,7 @@ html(lang="pt-br")
                 img(src="./../assets/logo.png", alt="", class="w-[85%]")
         main.main.flex.flex-row.flex-wrap.justify-center.items-center.gap-6.w-full.pb-10
             div.flex.flex-col.justify-center.items-center.gap-3(class="w-[90%]")                
-                img.rounded-lg.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${doctor.photo.split('.')[0]}-2.png`, alt="")
+                img.doctorId.rounded-lg.border-2.border-solid.border-amarelo.shadow-xl(src=`./../assets/${doctor.photo.split('.')[0]}-2.png`, alt="", data-id=doctor._id)
                 h2.font-barlow.font-bold.tracking-wider.text-azul.text-2xl=`${doctor.photo === 'paschoal.png' ? 'Dr.' : 'Dra.'} ${doctor.name}`
                 h3.font-barlow.font-bold.tracking-wider.text-azul.text-xl=doctor.speciality
             div.flex.flex-col.justify-center.items-center.gap-4.font-poppins.text-gray-700.tracking-wider.w-full.text-center
@@ -41,7 +41,7 @@ html(lang="pt-br")
                     p.font-bold(class="w-[35%]") ESTADO
                     p(class="w-[75%]")=doctor.state
             div.flex.flex-row.justify-evenly.items-center.w-full.font-poppins.text-gray-50.tracking-wider.text-center.py-8
-                a.bg-azul.px-4.py-2.shadow-xl(href="", class="w-[35%]") AGENDAR
-                a.bg-azul.px-4.py-2.shadow-xl(href="", class="w-[35%]") CONVERSAR
+                a.bg-azul.px-4.py-2.shadow-xl(href=`/agendamento/${doctor._id}`, class="w-[35%]") AGENDAR
+                a.bg-azul.px-4.py-2.shadow-xl(href=`/chat-room-paciente/${doctor._id}`, class="w-[35%]") CONVERSAR
         footer.w-full.bg-azul.flex.flex-row.justify-center.py-3
             img(src="./../assets/hapvida.png", alt="",class="w-[70%]") 
