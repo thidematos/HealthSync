@@ -6,6 +6,6 @@ main.addEventListener('click', (event) => {
   if (!button) return;
 
   window.location.replace(
-    `http://127.0.0.1:3000/chat-room/${button.dataset.id}`
+    `https://healthsync-9u7e.onrender.com/chat-room/${button.dataset.id}`
   );
 });

@@ -100,7 +100,7 @@ class App {
 
       const response = await axios({
         method: 'post',
-        url: `http://127.0.0.1:3000/api/pacientes/schedule/${this.doctorId}`,
+        url: `https://healthsync-9u7e.onrender.com/api/pacientes/schedule/${this.doctorId}`,
         data: {
           pacienteId: this.userId,
           day: this.selectedDate.day,

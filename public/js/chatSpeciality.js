@@ -24,7 +24,7 @@ class App {
       if (!button) return;
 
       window.location.replace(
-        `http://127.0.0.1:3000/chat-room/${button.dataset.id}`
+        `https://healthsync-9u7e.onrender.com/chat-room/${button.dataset.id}`
       );
     });
   }
@@ -44,7 +44,7 @@ class App {
 
     const response = await axios({
       method: 'get',
-      url: `http://127.0.0.1:3000/api/medicos?speciality=${speciality}`,
+      url: `https://healthsync-9u7e.onrender.com/api/medicos?speciality=${speciality}`,
     });
 
     return response.data.data.doctor;

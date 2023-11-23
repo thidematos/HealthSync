@@ -24,14 +24,16 @@ class App {
     try {
       const data = await axios({
         method: 'post',
-        url: 'http://127.0.0.1:3000/api/medicos/login',
+        url: 'https://healthsync-9u7e.onrender.com/api/medicos/login',
         data: {
           crm: this._getCrm(),
           password: this._getPassword(),
         },
       });
       console.log(data);
-      window.location.replace('http://127.0.0.1:3000/medico-overview');
+      window.location.replace(
+        'https://healthsync-9u7e.onrender.com/medico-overview'
+      );
     } catch (err) {
       this.showPopup();
     }

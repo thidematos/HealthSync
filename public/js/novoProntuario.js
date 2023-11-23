@@ -218,7 +218,7 @@ class App {
 
       const response = await axios({
         method: 'post',
-        url: 'http://127.0.0.1:3000/api/prontuario',
+        url: 'https://healthsync-9u7e.onrender.com/api/prontuario',
         data: this.prontuarioData,
       });
 

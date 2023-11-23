@@ -9,7 +9,7 @@ class App {
   async getAllMedicos() {
     const response = await axios({
       method: 'get',
-      url: 'http://127.0.0.1:3000/api/medicos',
+      url: 'https://healthsync-9u7e.onrender.com/api/medicos',
     });
     this.doctors = response.data.data.doctor;
     this.selectNearBy(this.myState());
@@ -65,7 +65,7 @@ class App {
       if (!button) return;
 
       window.location.replace(
-        `http://127.0.0.1:3000/medicos/${button.dataset.id}`
+        `https://healthsync-9u7e.onrender.com/medicos/${button.dataset.id}`
       );
     });
   }

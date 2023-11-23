@@ -30,7 +30,7 @@ class App {
       if (!button) return;
 
       window.location.replace(
-        `http://127.0.0.1:3000/chat/${button.dataset.speciality}`
+        `https://healthsync-9u7e.onrender.com/chat/${button.dataset.speciality}`
       );
     });
   }
@@ -39,7 +39,7 @@ class App {
     const id = document.querySelector('.imgId').dataset.id;
     const response = await axios({
       method: 'get',
-      url: `http://127.0.0.1:3000/api/medicos?fields=speciality,name&_id[ne]=${id}`,
+      url: `https://healthsync-9u7e.onrender.com/api/medicos?fields=speciality,name&_id[ne]=${id}`,
     });
     console.log(response.data.data);
     return response.data.data.doctor;

@@ -24,14 +24,16 @@ class App {
     try {
       const data = await axios({
         method: 'post',
-        url: 'http://127.0.0.1:3000/api/pacientes/login',
+        url: 'https://healthsync-9u7e.onrender.com/api/pacientes/login',
         data: {
           cpf: this._getCpf(),
           password: this._getPassword(),
         },
       });
       console.log(data);
-      window.location.replace('http://127.0.0.1:3000/paciente-overview');
+      window.location.replace(
+        'https://healthsync-9u7e.onrender.com/paciente-overview'
+      );
     } catch (err) {
       this.showPopup();
     }
