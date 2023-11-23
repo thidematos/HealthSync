@@ -73,3 +73,12 @@ exports.getAllPacientes = async (req, res, next) => {
     },
   });
 };
+
+exports.getHistorical = catchAsync(async (req, res, next) => {
+  const paciente = await Paciente.findById(req.params.id);
+
+  req.paciente = paciente;
+
+  console.log(paciente);
+  next();
+});

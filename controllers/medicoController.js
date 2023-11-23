@@ -81,3 +81,27 @@ exports.schedule = catchAsync(async (req, res, next) => {
 
   next();
 });
+
+exports.getPaciente = catchAsync(async (req, res, next) => {
+  const id = req.params.id;
+
+  const paciente = req.user.pacientes.find(
+    (paciente) => `${paciente._id}` === `${id}`
+  );
+
+  req.paciente = paciente;
+
+  next();
+});
+
+exports.getConsulta = catchAsync(async (req, res, next) => {
+  const id = req.query.consulta;
+
+  const paciente = req.user.pacientes.find(
+    (paciente) => `${paciente._id}` === `${id}`
+  );
+
+  req.consulta = paciente;
+
+  next();
+});

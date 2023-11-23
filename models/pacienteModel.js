@@ -54,7 +54,12 @@ const pacienteSchema = new mongoose.Schema({
     required: [true, 'Um endereço deve ter um estado'],
   },
   healthPlan: String,
-  historical: String,
+  prontuarios: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Prontuario',
+    },
+  ],
   prescriptions: String,
   schedule: [
     {
@@ -116,6 +121,8 @@ pacienteSchema.pre(/^find/, function (next) {
       path: 'medicoId',
       select: '-role -__v -disponibilidade -pacientes',
     },
+  }).populate({
+    path: 'prontuarios',
   });
   next();
 });

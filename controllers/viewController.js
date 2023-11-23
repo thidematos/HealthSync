@@ -78,7 +78,28 @@ exports.consultas = (req, res, next) => {
 
 exports.pacientes = (req, res, next) => {
   res.locals.user = req.user;
-  console.log(req.user.pacientes);
 
   res.status(200).render('pacientes');
+};
+
+exports.fichaPaciente = (req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.paciente = req.paciente;
+  console.log(req.paciente);
+  res.status(200).render('ficha-paciente');
+};
+
+exports.historico = (req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.paciente = req.paciente;
+
+  res.status(200).render('historical');
+};
+
+exports.novoProntuario = (req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.paciente = req.paciente;
+  res.locals.consulta = req.consulta;
+
+  res.status(200).render('novo-prontuario');
 };

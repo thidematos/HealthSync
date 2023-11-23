@@ -4,6 +4,8 @@ const authController = require('./../controllers/authController');
 const chatController = require('./../utils/chatController');
 const roomController = require('./../controllers/roomController');
 const medicoController = require('./../controllers/medicoController');
+const pacienteController = require('./../controllers/pacienteController');
+const prontuarioController = require('./../controllers/prontuarioController');
 
 const router = express.Router();
 
@@ -110,6 +112,32 @@ router.get(
   authController.protect,
   authController.restrictTo('medico'),
   viewController.pacientes
+);
+
+router.get(
+  '/ficha-paciente/:id',
+  authController.protect,
+  authController.restrictTo('medico'),
+  medicoController.getPaciente,
+  viewController.fichaPaciente
+);
+
+router.get(
+  '/historico/:id',
+  authController.protect,
+  authController.restrictTo('medico'),
+  pacienteController.getHistorical,
+  viewController.historico
+);
+
+router.get(
+  '/novo-prontuario/:id',
+  authController.protect,
+  authController.restrictTo('medico'),
+  medicoController.getConsulta,
+  pacienteController.getHistorical,
+  prontuarioController.createProntuario,
+  viewController.novoProntuario
 );
 
 module.exports = router;

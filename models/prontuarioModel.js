@@ -2,16 +2,18 @@ const mongoose = require('mongoose');
 
 const prontuarioSchema = new mongoose.Schema({
   paciente: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
+    ref: 'Paciente',
     required: [true, 'Um prontuário deve ter um paciente'],
   },
   healthPlan: String,
   medico: {
-    type: String,
+    type: mongoose.Schema.ObjectId,
+    ref: 'Medico',
     required: [true, 'Um prontuário deve ter um médico responsável'],
   },
   date: {
-    type: Date,
+    type: String,
     required: [true, 'Um prontuário deve ter uma data'],
   },
   anamnese: [
@@ -60,7 +62,6 @@ const prontuarioSchema = new mongoose.Schema({
     {
       name: String,
       results: String,
-      default: 'Nenhum exame realizado',
     },
   ],
   observations: {

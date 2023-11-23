@@ -21,7 +21,7 @@ html(lang="pt-br")
         main.main.flex.flex-col.justify-center.items-center.gap-6.pb-10.w-full
             h3.font-barlow.font-bold.text-3xl.text-azul.drop-shadow-lg Pacientes
             each paciente in user.pacientes 
-                div.paciente__card.flex.flex-col.justify-center.items-center.gap-3.bg-azul.font-poppins.text-gray-50.text-center.shadow-xl.p-3(class="w-[80%]", data-id=`${paciente._id}`)
+                a.paciente__card.flex.flex-col.justify-center.items-center.gap-3.bg-azul.font-poppins.text-gray-50.text-center.shadow-xl.p-3(class="w-[80%]", data-id=`${paciente._id}`, href=`/ficha-paciente/${paciente._id}`)
                     div.flex.flex-row.justify-evenly.items-center.w-full
                         p.font-bold.drop-shadow-lg=paciente.day 
                         p.font-bold.drop-shadow-lg=paciente.hour + ' hr.'
